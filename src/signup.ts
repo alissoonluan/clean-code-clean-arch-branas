@@ -1,7 +1,6 @@
 import crypto from "crypto";
 import { validateCpf } from "./validateCpf";
 import { connection } from './databaseConnection';
-import { validateAccountByEmail } from "./getAccountByEmail";
 
 export interface Input{
 	name:string
@@ -35,6 +34,12 @@ function validateInputData(input:Input){
 	if (!validateEmail(input.email)) throw new Error('Invalid email') 
 	if (!validateCpf(input.cpf)) throw new Error('Invalid CPF')
 	if (input.isDriver && !validateCarPlate(input.carPlate!)) throw new Error('Invalid Car Plate')
+}
+
+async function validateAccountByEmail(email: string) {
+  const [account] = await connection.query("select * from cccat15.account where email = $1", [email]);
+
+  if (account) throw new Error("Email already exists");
 }
 
 export async function signup (input: Input): Promise<Output> {
