@@ -1,17 +1,8 @@
+import { IAccount } from "./IAccount.interface";
 import { connection } from "./databaseConnection";
 
-export interface Account {
-  name:string
-	email:string
-	cpf:string
-	password:string
-	carPlate?: string
-	isPassenger?:boolean
-	isDriver?:boolean
-	accountId:string
-}
 
-interface DatabaseAccount extends Omit<Account, 'carPlate' | 'isPassenger' | 'isDriver' | 'accountId'> {
+interface DatabaseAccount extends Omit<IAccount, 'carPlate' | 'isPassenger' | 'isDriver' | 'accountId'> {
   car_plate?: string;
   is_driver: boolean;
   is_passenger?: boolean;
@@ -19,7 +10,7 @@ interface DatabaseAccount extends Omit<Account, 'carPlate' | 'isPassenger' | 'is
 }
 
 
-function mapperAccount(account: DatabaseAccount): Account {
+function mapperAccount(account: DatabaseAccount): IAccount {
 	return {
 		cpf: account.cpf,
 		email: account.email,
@@ -32,7 +23,7 @@ function mapperAccount(account: DatabaseAccount): Account {
 	}
 } 
 
-export async function getAccount(accountId: string): Promise<Account | null> {
+export async function getAccount(accountId: string): Promise<IAccount | null> {
   const [account] = await connection.query("select * from cccat15.account where account_id = $1", [accountId]);
 
 	if (!account) return null

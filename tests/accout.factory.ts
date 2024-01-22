@@ -1,12 +1,9 @@
-import { Account } from "../src/getAccount";
+import { IAccount } from "../src/IAccount.interface";
+import { ICreateAccount } from '../src/ICreateAccount.interface';
 
-export interface CreateAccountInput extends Omit<Account,'accountId'> {
+type Override = Partial<IAccount>;
 
-}
-
-type Override = Partial<Account>;
-
-export function makeAccount(override: Override = {}): CreateAccountInput {
+export function makeAccount(override: Override = {}): ICreateAccount {
   return {
     name:'Teste da Silva',
     email: `testesilva${Math.random()}@usuario.com`,

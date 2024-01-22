@@ -1,9 +1,10 @@
 import { expect, describe, it} from '@jest/globals'
 import axios from 'axios'
-import { CreateAccountInput, makeAccount } from './accout.factory';
+import { makeAccount } from './accout.factory';
+import { ICreateAccount } from '../src/ICreateAccount.interface';
 
 describe('Server',()=>{
-  let input: CreateAccountInput;
+  let input: ICreateAccount;
 
   beforeEach(()=>{
     input = makeAccount();

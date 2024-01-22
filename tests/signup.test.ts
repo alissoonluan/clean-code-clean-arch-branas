@@ -1,10 +1,11 @@
 import { expect, describe, it} from '@jest/globals'
 import {signup} from '../src/signup'
 import {getAccount} from '../src/getAccount'
-import { CreateAccountInput, makeAccount } from './accout.factory'
+import { makeAccount } from './accout.factory'
+import { ICreateAccount } from '../src/ICreateAccount.interface'
 describe('Signup',() => {
 
-  let input: CreateAccountInput;
+  let input: ICreateAccount;
 
   beforeEach(()=>{
     input = makeAccount();

@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { validateCpf } from "./validateCpf";
 import { connection } from './databaseConnection';
 
-export interface Input{
+export interface Input {
 	name:string
 	email:string
 	cpf:string
