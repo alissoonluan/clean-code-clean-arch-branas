@@ -42,7 +42,7 @@ async function validateAccountByEmail(email: string) {
   if (account) throw new Error("Email already exists");
 }
 
-export async function signup (input: Input): Promise<Output> {
+export async function signup(input: Input): Promise<Output> {
 	const accountId = crypto.randomUUID();
 	await validateAccountByEmail(input.email);
 	validateInputData(input)
