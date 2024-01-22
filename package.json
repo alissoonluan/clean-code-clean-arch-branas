@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node  src/server.ts --watch",
     "test": "npx jest --runInBand",
-    "test:cov": "npx jest --coverage --runInBand",
+    "test:cov": "npx jest --coverage --runInBand --detectOpenHandles",
     "test:watch": "npx jest --watchAll --detectOpenHandles"
   },
   "keywords": [],

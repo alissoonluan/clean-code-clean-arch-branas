@@ -1,6 +1,6 @@
 import { connection } from "./databaseConnection";
 
-interface Account {
+export interface Account {
   name:string
 	email:string
 	cpf:string
